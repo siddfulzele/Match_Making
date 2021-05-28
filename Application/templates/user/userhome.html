@@ -1,0 +1,159 @@
+{% extends 'user/userlayout.html' %}
+
+{% block body %}
+
+<div class="wrapper d-flex align-items-stretch" style="text-transform:capitalize;">
+			<nav id="sidebar" style="width: 20%">
+				<div class="custom-menu">
+					<!-- <button type="button" id="sidebarCollapse" class="btn btn-primary"></button> -->
+        </div>
+	  		<div class="img bg-wrap text-center py-4" style="background-image: url({{ url_for('static', filename='user/images/bg_1.jpg')}});">
+	  			<div class="user-logo">
+	  				<a href="{{ url_for('userHome')}}">
+	  				{% if data[0][4] == 'm'%}
+		        	<img src="{{ url_for('static', filename='images/male.png')}}" class="img">
+		        	{% else %}
+		        	<img src="{{ url_for('static', filename='images/female.png')}}" class="img">
+		        	{% endif %}	  					
+	  				<!-- <div class="img" style="background-image: url({{ url_for('static', filename='user/images/logo.jpg')}});"></div> -->
+	  				</a>
+	  				<h3>It's <b>{{ session['username'] }}</b></h3>
+	  			</div>
+	  		</div>
+	  		<div>
+	  			<br>
+	  		<div class="row" >
+	  			<div class="col-sm-6"><h6 style="color: #fff;padding-left: 10px">Age : {{data[0][2]}}</h6></div>
+	  			<div class="col-sm-6"><h6 style="color: #fff">Gender : {% if data[0][4] == 'm'%} Male {% else %} Female {% endif %}</h6></div>
+	  		</div>
+	  		<br>
+	  		<div class="row" >
+	  			<div class="col-sm-6"><h6 style="color: #fff;padding-left: 10px">Status : {{data[0][3]}}</h6></div>
+	  			<div class="col-sm-6"><h6 style="color: #fff">Location : {{data[0][10]}}</h6></div>
+	  		</div>	
+	  		<br>
+	  		<div class="row" >
+	  			<div class="col-sm-6"><h6 style="color: #fff;padding-left: 10px">Oriantation : {{data[0][5]}}</h6></div>
+	  			<div class="col-sm-6"><h6 style="color: #fff">Height : {{data[0][8]}} Inch </h6></div>
+	  		</div>	  			
+  				<!-- <p>{{data[0]}}</p>				 -->
+  			
+	  		</div>
+        <ul class="list-unstyled components mb-5" >        	          
+          <li>
+            <a href="{{ url_for('user_logout')}}"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+          </li>
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-3 p-md-2 pt-3" style="background-color: #d9d9d9">
+      	<!---
+      	{% for i in range(1,7)%}
+      		{{data[i]}}
+      		<br>
+      	{% endfor %}
+      -->
+      <div class="container-fluid" >
+  <div class="row">
+
+	{% for i in data[1:]%}
+
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center" style="margin: 5px auto;width: 90%">
+        <div class="panel-heading">
+        <a type="button"  data-toggle="modal" data-target="#myModal{{i[0]}}">
+          <h5 style="color: #fff;margin: 0px" ><b>{{i[1]}}</b></h5>
+        </a>        
+        </div>
+        <div class="panel-body">
+        </div>
+        <div class="panel-footer">
+        	<a type="button"  data-toggle="modal" data-target="#myModal{{i[0]}}">
+        	{% if i[4] == 'm'%}
+        	<img src="{{ url_for('static', filename='images/male.png')}}" class="img-thumbnail" style="width: 60%;border: none">
+        	{% else %}
+        	<img src="{{ url_for('static', filename='images/female.png')}}" class="img-thumbnail" style="width: 60%;border: none">
+        	{% endif %}
+        	</a>
+        	<hr style="margin: 5px 0px">
+          <p style="color: black;font-size: 16px;text-transform: capitalize;">
+                    	
+          	Sex : <b>{{i[4]}} </b> &nbsp; Age : <b>{{i[2]}}</b><br>
+
+          	From : <b>{{i[10]}}</b>
+
+          </p>                   
+          <button class="btn " style="padding: 5px 10px;width: 25%;margin: 5px 5px;background-color: #32373D;">Dislike</button>
+          <button class="btn " style="padding: 5px 10px;width: 25%;margin: 5px 5px">Like</button>
+        </div>
+      </div>      
+    </div>
+    {% endfor %}
+    
+  </div>
+</div>
+
+{% for i in data[1:]%}
+
+<!-- Modal -->
+<div id="myModal{{i[0]}}" class="modal fade" role="dialog" >
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">              	
+        <h4 class="modal-title">{{i[1]}} - {{i[2]}}</h4>
+        <button class="close" data-dismiss="modal">
+                        ×
+                    </button>
+      </div>
+      <div class="modal-body" style="text-transform:capitalize;text-align: left;padding-left: 10%">
+      	<div class="row">
+      		<div class="col-sm-6"><h6>Job : {{i[9]}}</h6></div>
+      		<div class="col-sm-6"><h6>Status : {{i[3]}}</h6></div>
+      	</div>      	
+      	<br>
+      	<div class="row">
+      		<div class="col-sm-6"><h6>Height : {{i[8]}}</h6></div>
+      		<div class="col-sm-6"><h6>Body Profile : {{i[13]}}</h6></div>
+      	</div>      	
+      	<br>
+      	<div class="row">
+      		<div class="col-sm-6"><h6>Interest : {{i[17]}}</h6></div>
+      		<div class="col-sm-6"><h6>Location Prefered : {{i[18]}}</h6></div>
+      	</div>      	
+      	<br>
+      	<div class="row">
+      		<div class="col-sm-6"><h6>Education Level : {{i[14]}}</h6></div>
+      		<div class="col-sm-6"><h6>Droped Out : {{i[15]}}</h6></div>
+      	</div>      	
+      	<br>
+      	<div class="row">
+      		<div class="col-sm-6"><h6>Drinks : {{i[6]}}</h6></div>
+      		<div class="col-sm-6"><h6>Drugs : {{i[7]}}</h6></div>      		
+      	</div>
+      	<br>
+      	<div class="row">      		      		
+      		<div class="col-sm-6"><h6>Smokes : {{i[12]}}</h6></div>
+      		<div class="col-sm-6"><h6>Pets : {{i[11]}}</h6></div>
+      	</div>
+      	<br>
+      	<div class="row">      		      		
+      		<div class="col-sm-12"><h6 style="text-align: center;">Bio :</h6><h6>{{i[16]}}</h6></div>      		
+      	</div>        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+      </div>
+	</div>
+{% endfor %}
+
+{% endblock %}

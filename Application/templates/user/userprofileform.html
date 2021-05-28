@@ -1,0 +1,227 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url({{ url_for('static', filename='images/bg-01.jpg')}});">
+			<div style="width: 95%;height: 75%;">
+				<span class="login100-form-title p-b-10">
+					{{ session['username'] }}, we love to know about you..!<br>
+					<h5 style="padding: 5px"><i>Be patient..!! The more info you provide , better the recommendations we give.</i></h5>
+				</span>
+				<center>
+				 
+				 </center>
+				<form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="" style="padding: 20px">
+					<h4 style="text-align: center;margin-bottom: 5px"><i>Complete Your Profile...</i></h4>
+					<div class="row">
+						<div class="form-group col-sm-3" >	
+							<center>
+							<label for="age">Age :</label>				    
+						    <input class="form-control input-sm" id="age" type="number" name="age" placeholder="Age" required>
+						    </center>
+					  	</div>
+					  	<div class="col-sm-3">			
+					  		<center>
+					  		<label for="sex">Sex :</label>
+					  		<ul class="nav nav-pills" style="margin-top: 2%">
+					  			<li style="margin-left: 15%"><label class="radio"><input type="radio" name="sex" value="m">Male</label></li>
+					  			<li style="margin-left: 15%"><label class="radio"><input type="radio" name="sex" value="f">Female</label></li>
+					  		</ul>				    		    
+						    </center>
+					  	</div>
+					  	<div class="form-group col-sm-3" >					    
+					  		<label for="height" style="text-align: center;">Height :</label>				    
+						    <input class="form-control input-sm" id="height" type="number" name="height" placeholder="Height in Inches" required>
+					  	</div>
+					  	<div class="form-group col-sm-3">
+					  		<center>
+							<label for="drink">Drinks :</label>
+							<select class="form-control" id="drink" name="drink" required>
+								<option value="not at all" selected>Not at All</option>
+								<option value="rarely">Rarely</option>								
+								<option value="socially">Socially</option>
+								<option value="often">Often</option>
+								<option value="very often">Very Often</option>
+								<option value="desperately">Desperately</option>
+							</select>
+							</center>
+						</div>
+					</div>
+							
+					<div class="row">						
+						<div class="form-group col-sm-3">
+							<center>
+							<label for="orientation">Orientation :</label>
+							<select class="form-control" id="orientation" name="orientation" required>
+								<option value="straight" selected>Straight</option>
+								<option value="bisexual">Bisexual</option>								
+								<option value="gay">Gay</option>								
+							</select>
+							</center>
+						</div>
+						<div class="form-group col-sm-3">
+							<center>
+							<label for="status">Status :</label>
+							<select class="form-control" id="status" name="status" required>
+								<option value="single" selected>Single</option>
+								<option value="married">Married</option>								
+								<option value="available">Available</option>							
+								<option value="seeing someone">Seeing Someone</option>								
+							</select>
+							</center>
+						</div>
+						<div class="form-group col-sm-3">
+							<center>
+							<label for="smokes">Smokes :</label>
+							<select class="form-control" id="smokes" name="smokes" required>
+								<option value="yes" selected>Yes</option>
+								<option value="no">No</option>								
+								<option value="sometimes">Sometimes</option>							
+								<option value="when drinking">When Drinking</option>								
+								<option value="trying to quit">Trying to Quit</option>
+							</select>
+							</center>
+						</div>
+						<div class="form-group col-sm-3">
+							<center>
+							<label for="drugs">Drugs :</label>
+							<select class="form-control" id="drugs" name="drugs" required>
+								<option value="never" selected>Never</option>								
+								<option value="sometimes">Sometimes</option>							
+								<option value="often">Often</option>						
+							</select>
+							</center>
+						</div>
+					</div>	
+					<div class="row">
+						<div class="form-group col-sm-3">
+							<center>
+							<label for="edu_level">Education Level :</label>
+							<select class="form-control" id="edu_level" name="edu_level" required>
+								<option value="1">1</option>								
+								<option value="2">2</option>							
+								<option value="3">3</option>						
+								<option value="4">4</option>						
+								<option value="5">5</option>						
+							</select>
+							</center>
+						</div>
+						<div class="form-group col-sm-3">
+							<center>
+							<label for="dropped_out">Dropped Out :</label>
+							<select class="form-control" id="dropped_out" name="dropped_out" required>
+								<option value="no">No</option>								
+								<option value="yes">Yes</option>												
+							</select>
+							</center>
+						</div>
+						<div class="form-group col-sm-3" >					    					  		
+						    <center>
+							<label for="job">Job :</label>
+							<select class="form-control" id="job" name="job" required>								
+								<option value="science / tech / engineering">science / tech / engineering</option>
+								<option value="student">student</option>
+								<option value="artistic / musical / writer">artistic / musical / writer</option>
+								<option value="medicine / health">medicine / health</option>
+								<option value="sales / marketing / biz dev">sales / marketing / biz dev</option>
+								<option value="education / academia">education / academia</option>
+								<option value="executive / management">executive / management</option>
+								<option value="banking / financial / real estate">banking / financial / real estate</option>
+								<option value="entertainment / media">entertainment / media</option>
+								<option value="other_job">other job</option>										
+							</select>
+							</center>
+
+					  	</div>
+					  	<div class="form-group col-sm-3" >					    
+					  		<label for="interests" style="text-align: center;">Interests :</label>				    
+						    <input class="form-control input-sm" id="interests" type="text" name="interests" placeholder="Like : Sports / Instruments / Writting" required>
+					  	</div>					  
+					</div>	
+					<div class="row">
+						<div class="form-group col-sm-3" >					    					  		
+						    <center>
+							<label for="body_profile">Body Profile : :</label>
+							<select class="form-control" id="body_profile" name="body_profile" required>
+								<option value="fit">fit</option>
+								<option value="athletic">athletic</option>
+								<option value="fat">fat</option>
+								<option value="skinny">skinny</option>
+							</select>
+							</center>						    
+					  	</div>	
+					  	<div class="form-group col-sm-3" >					    
+					  		<label for="pet" style="text-align: center;">Pets :</label>				    
+						    <input class="form-control input-sm" id="pet" type="text" name="pet" placeholder="Like : likes dogs / likes cats / dislikes dogs and dislikes cats" required>
+					  	</div>
+					  	<div class="form-group col-sm-3" >					    					  		
+						    <center>
+							<label for="location">Location :</label>
+							<select class="form-control" id="location" name="location" required>
+								<option value="san francisco">san francisco</option>								
+								<option value="oakland">oakland</option>
+								<option value="berkeley">berkeley</option>
+								<option value="san mateo">san mateo</option>
+								<option value="palo alto">palo alto</option>
+								<option value="san rafael">san rafael</option>
+								<option value="alameda">alameda</option>
+								<option value="san leandro">san leandro</option>
+								<option value="redwood city">redwood city</option>
+								<option value="emeryville">emeryville</option>
+								<option value="daly city">daly city</option>
+								<option value="walnut creek">walnut creek</option>
+								<option value="hayward">hayward</option>
+								<option value="pacifica">pacifica</option>
+								<option value="el cerrito">el cerrito</option>
+								<option value="menlo park">menlo park</option>
+								<option value="benicia">benicia</option>
+								<option value="burlingame">burlingame</option>
+								<option value="richmond">richmond</option>
+								<option value="martinez">martinez</option>
+								<option value="location_other">Other</option>
+							</select>
+							</center>
+
+					  	</div>					  
+					  	<div class="form-group col-sm-3">
+							<center>
+							<label for="location_preference">Location Preference :</label>
+							<select class="form-control" id="location_preference" name="location_preference" required>
+								<option value="anywhere" selected>anywhere</option>
+								<option value="same state">same state</option>								
+								<option value="same city">same city</option>												
+							</select>
+							</center>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3"></div>
+						<div class="form-group col-sm-6" >					    
+					  		<label for="bio" style="text-align: center;">Bio :</label>				    
+						    <textarea rows="3" style="resize: none;" class="form-control input-sm" id="bio" name="bio" placeholder="what you like & dislikes... Something About you.."  required></textarea>
+					  	</div>
+						<div class="col-sm-3"></div>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn">
+							Next &nbsp;<i class="fa fa-arrow-right"></i>
+						</button>
+					</div>					
+				</form>
+				<div class="container-login100-form-btn m-t-32">
+						<a href="{{ url_for('user_logout') }}" class="login100-form-btn">Cancel &nbsp;<i class="fa fa-arrow-left"></i></a>						
+					</div>				
+				{% include '/includes/_messages.html' %}
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+	
+{% endblock %}

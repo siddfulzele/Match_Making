@@ -1,0 +1,1 @@
+finalpreprocessed3 - sex column removed, education still a ordinal variable.
